@@ -1,0 +1,87 @@
+/* Sidebar */
+.sidebar {
+    height: 90vh;
+    /* width: calc(25vw - 10px); */
+    width: 25vw;
+    background-color: rgb(255, 255, 255);
+    border-right: 0.3vh solid black;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    padding: 0;
+    overflow: auto;
+}
+
+/* each element in <ul> */
+.sidebar ul li {
+    list-style: none;
+    /* padding: 10px 15px; */
+    padding: 10px 15px 10px 20px;
+
+    background-color: rgb(142, 142, 142);
+    border-bottom: 0.1vh solid black;
+}
+
+
+/* this targets sub list of community names, removing bottom border */
+.sidebar ul li.list-communities-li ol.list-communities-ol li {
+    border-bottom: none;
+    background-color: white;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: black;
+    font: 1em 'Poppins', sans-serif;
+}
+
+.sidebar ul li:hover {
+    background-color: rgb(220, 61, 43);
+    color: rgb(255, 255, 255);
+}
+
+/* home link style */
+.sidebar ul li.home-link {
+    background-color: lightgrey;
+    padding-left: 40px;
+    /* margin: 0 10; */
+    /* margin-bottom: 15px; */
+    border-bottom: 0vw solid black;
+}
+
+.sidebar ul li.home-link:hover {
+    background-color: rgb(220, 61, 43);
+    color: white;
+}
+
+/* style for divider after home link */
+.nav-divider {
+    border: none;
+    border-top: 1px solid black;
+    margin: 30px 10;
+
+}
+
+.sidebar ul li.list-communities-li {
+
+    background-color: rgb(255, 255, 255);
+    border-bottom: none;
+}
+
+/* ensures the whole community list doesn't get highlighted when one community is hovered over */
+.sidebar ul li.list-communities-li:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+/* targets community names */
+.sidebar ul li.list-communities-li a {
+    text-decoration: none;
+    color: black;
+    font: 1em 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.sidebar ul li.list-communities-li a:hover {
+    color: rgb(220, 61, 43);
+}
