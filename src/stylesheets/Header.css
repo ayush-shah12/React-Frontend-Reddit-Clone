@@ -1,0 +1,50 @@
+/* Banner */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 10%;
+    border-bottom: 0.3vh solid black;
+}
+
+.logo {
+    /* padding-top: 2.5vh; */
+    max-width: 5vw;
+    max-height: 5vh;
+}
+
+.search {
+    padding-left: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    height: 5vh;
+    background-color: rgba(255, 255, 255, 0.902);
+    border-radius: 10px;
+}
+
+.logo-name {
+    display: flex;
+    font: 1.5em 'Poppins', sans-serif;
+    color: rgb(220, 61, 43);
+    text-decoration: none;
+
+}
+
+.create {
+    border-radius: 10px;
+    width: 10vw;
+    height: 6vh;
+    background-color: rgb(203, 197, 197);
+    cursor: pointer;
+    font: .8em 'Poppins', sans-serif;
+}
+
+.create:hover {
+    background-color: rgb(220, 61, 43);
+    color: rgb(255, 255, 255);
+}
