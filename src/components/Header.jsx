@@ -1,12 +1,12 @@
+import { useContext } from "react";
+import { ViewContext } from "../context/ViewContext";
+import redditLogo from "../images/redditLogoTransparent.png";
 import "../stylesheets/Header.css";
 import "../stylesheets/index.css";
-import redditLogo from "../images/redditLogoTransparent.png"; 
-import { useContext } from "react";
-import { ViewContext } from "../Context/ViewContext";
 
 const Header = () => {
 
-    const {setView} = useContext(ViewContext);
+    const {setView } = useContext(ViewContext);
 
     return (
         <nav>

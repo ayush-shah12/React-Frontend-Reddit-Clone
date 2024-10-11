@@ -2,7 +2,7 @@ import { useContext } from "react";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import PostPage from "./pages/PostPage";
-import { ViewContext } from "./Context/ViewContext";
+import { ViewContext } from "./context/ViewContext";
 import Create from "./pages/Create";
 import CommunityPage from "./pages/CommunityPage";
 
