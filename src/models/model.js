@@ -8,7 +8,7 @@ export default class Model {
                     communityID: 'community1',
                     name: 'Am I the Jerk?',
                     description: 'A practical application of the principles of justice.',
-                    postIDs: ['p1'],
+                    postIDs: ['p1', 'p3'],
                     startDate: new Date('August 10, 2014 04:18:00'),
                     members: ['rollo', 'shemp', 'catlady13', 'astyanax', 'trucknutz69'],
                     memberCount: 4,
@@ -62,6 +62,16 @@ export default class Model {
                     commentIDs: ['comment4', 'comment5'],
                     views: 1023,
                 },
+                { // post 1
+                    postID: 'p3',
+                    title: 'AITJ: I parked my cybertruck in the handicapped spot to protect it from bitter, jealous losers.',
+                    content: 'Recently I went to the store in my brand new Tesla cybertruck. I know there are lots of haters out there, so I wanted to make sure my truck was protected. So I parked it so it overlapped with two of those extra-wide handicapped spots.  When I came out of the store with my beef jerky some Karen in a wheelchair was screaming at me.  So tell me prhreddit, was I the jerk?',
+                    linkFlairID: 'lf1',
+                    postedBy: 'trucknutz69',
+                    postedDate: new Date('August 23, 2024 01:19:00'),
+                    commentIDs: ['comment1', 'comment2'],
+                    views: 14,
+                }
             ],
             comments: [ //array of comment objects
                 { // comment 1
