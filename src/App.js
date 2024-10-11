@@ -1,11 +1,21 @@
 // ************** THIS IS YOUR APP'S ENTRY POINT. CHANGE THIS FILE AS NEEDED. **************
 // ************** DEFINE YOUR REACT COMPONENTS in ./components directory **************
+import { ModelContextProvider } from './Context/ModelContext.jsx';
+import { ViewContextProvider } from './Context/ViewContext.jsx';
 import './stylesheets/App.css';
-import HomePage from './pages/HomePage';
+import Wrapper from './Wrapper.jsx';
+
+// Notes: <App/> can't be here since I can't deal with ViewContext here since its also defined here
+// To avoid all this unneccessary stuff index.jsx should be have <App/> wrapped with these providers, but not allowed to change index.jsx
 
 function App() {
+
   return (
-    <HomePage/>
+    <ViewContextProvider>
+      <ModelContextProvider>
+        <Wrapper/> 
+      </ModelContextProvider>
+    </ViewContextProvider>
   );
 }
 

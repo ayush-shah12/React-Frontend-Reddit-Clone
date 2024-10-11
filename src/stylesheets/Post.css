@@ -1,0 +1,77 @@
+/* each INDIVIDUAL post */
+.post {
+    margin-top: 1rem;
+    display: flex;
+    width: 40vw;
+    height: auto;
+    flex-direction: column;
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
+    padding: 1rem;
+    border-bottom: .3vh dashed black;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.postHeader {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.postHeader p {
+    color: black;
+    font: .9em 'Poppins', sans-serif;
+}
+
+.postTitle {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.postTitle h3 {
+    color: black;
+    font: 1.5em 'Poppins', sans-serif;
+}
+
+.linkFlair {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    gap: 0.5vw;
+}
+
+.linkFlair p {
+    color: black;
+    font: .9em 'Poppins', sans-serif;
+    padding: 0.2rem 0.5rem;
+    text-align: center;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: rgb(220, 61, 43);
+}
+
+.postTextPreview {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.postTextPreview p {
+    color: black;
+    font: 1em 'Poppins', sans-serif;
+}
+
+.postFooter {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.postFooter p {
+    color: black;
+    font: .9em 'Poppins', sans-serif;
+}
