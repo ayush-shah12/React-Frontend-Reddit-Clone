@@ -1,8 +1,7 @@
 // ************** THIS IS YOUR APP'S ENTRY POINT. CHANGE THIS FILE AS NEEDED. **************
 // ************** DEFINE YOUR REACT COMPONENTS in ./components directory **************
-import { ModelContextProvider } from './Context/ModelContext.jsx';
-import { ViewContextProvider } from './Context/ViewContext.jsx';
-import './stylesheets/App.css';
+import { ModelContextProvider } from './context/ModelContext.jsx';
+import { ViewContextProvider } from './context/ViewContext.jsx';
 import Wrapper from './Wrapper.jsx';
 
 // Notes: <App/> can't be here since I can't deal with ViewContext here since its also defined here

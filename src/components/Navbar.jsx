@@ -1,19 +1,19 @@
-import "../stylesheets/Navbar.css";
-import { ModelContext } from "../Context/ModelContext";
 import { useContext } from "react";
-import { ViewContext } from "../Context/ViewContext";
+import { ModelContext } from "../context/ModelContext";
+import { ViewContext } from "../context/ViewContext";
+import "../stylesheets/Navbar.css";
 
 const NavBar = () => {
 
   const { model } = useContext(ModelContext);
-  const { setView } = useContext(ViewContext);
+  const { view, setView } = useContext(ViewContext);
 
 
   return (
     <div className="sidebar">
       <ul>
-        <a style = {{cursor: "pointer"}} onClick = {() => {setView("Home")}} className="nav-link active">
-          <li className="home-link">
+        <a style={{ cursor: "pointer" }} onClick={() => { setView("Home") }} className="nav-link active">
+          <li style={{backgroundColor: (view === "Home") ? "rgb(220, 61, 43)" : ""}}className="home-link">
             Home
           </li>
         </a>
@@ -34,7 +34,6 @@ const NavBar = () => {
                   <p>p/{community.name}</p>
                 </a>
               </li>
-
             ))}
           </ol>
         </li>

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import Header from "../components/Header"
 import NavBar from "../components/Navbar"
 import Post from "../components/Post"
-import { ModelContext } from "../Context/ModelContext.jsx"
+import { ModelContext } from "../context/ModelContext.jsx"
 import "../stylesheets/HomePage.css"
 import "../stylesheets/index.css"
 
@@ -62,6 +62,10 @@ const HomePage = () => {
                 }
                 if (!otherDict[post2.postID]) {
                     return -1;
+                }
+                // If the comment dates are the same, sort by the post date
+                if(otherDict[post1.postID].commentDate === otherDict[post2.postID].commentDate) {
+                    return post1.postedDate < post2.postedDate ? 1 : -1;
                 }
                 return otherDict[post1.postID].commentDate < otherDict[post2.postID].commentDate ? 1 : -1;
             });

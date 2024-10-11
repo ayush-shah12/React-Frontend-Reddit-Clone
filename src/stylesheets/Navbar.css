@@ -13,8 +13,8 @@
     overflow: auto;
 }
 
-/* each element in <ul> */
-.sidebar ul li {
+/* each element in <ul>     CREATE COMMUNITY */
+.sidebar ul li {        
     list-style: none;
     /* padding: 10px 15px; */
     padding: 10px 15px 10px 20px;
