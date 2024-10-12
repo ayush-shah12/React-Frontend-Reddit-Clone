@@ -6,6 +6,7 @@ import "../stylesheets/index.css";
 import { useContext } from "react";
 import { ViewContext } from "../context/ViewContext";
 import { ModelContext } from "../context/ModelContext";
+import Comments from "../components/Comments";
 
 const PostPage = () => {
 
@@ -26,7 +27,7 @@ const PostPage = () => {
                 <div className="individualContainer" id="individualContainer">
                     <Post post={post} fullPost={true} />
                     <div className="commentSectionDiv">
-                        
+                        <Comments/>
                     </div>
                 </div>
             </div>
