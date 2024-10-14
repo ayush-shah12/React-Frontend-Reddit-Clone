@@ -1,0 +1,12 @@
+.communityHeader {
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 0.1vh solid black;
+  }
+  
+  .communityInfo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+
+  }
