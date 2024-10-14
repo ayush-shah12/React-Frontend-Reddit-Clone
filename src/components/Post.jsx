@@ -47,7 +47,7 @@ export function generateTimeStamp(date) {
     return (yearDifference === 1) ? "1 year ago" : yearDifference + " years ago";
 
 }
-function Post({ post, fullPost = false }) {
+function Post({ post, fullPost = false, showCommunityName = true }) {
 
     const { model, setModel } = useContext(ModelContext);
     const { setView, setPostID } = useContext(ViewContext);
@@ -96,7 +96,9 @@ function Post({ post, fullPost = false }) {
             <div className="linkToPost nav-link" onClick={() => { onClickPost(post.postID) }} style={{ cursor: "pointer" }}>
                 <div className="post">
                     <div className="postHeader">
-                        <p> u/{post.postedBy} • {getCommunityName(post.postID)} • {generateTimeStamp(post.postedDate)}</p>
+                        <p> u/{post.postedBy} 
+                            {showCommunityName ? ` • ${getCommunityName(post.postID)}`: " "} 
+                            • {generateTimeStamp(post.postedDate)}</p>
                     </div>
                     <div className="postTitle">
                         <h3>{post.title}</h3>
