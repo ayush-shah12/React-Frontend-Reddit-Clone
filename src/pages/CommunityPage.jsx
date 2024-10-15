@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useMemo, useState } from "react"
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post"
@@ -14,29 +14,31 @@ const CommunityPage = () => {
     const { model } = useContext(ModelContext);
     const { communityID } = useContext(ViewContext);
     const [community, setCommunity] = useState(null);
-    const [posts, setPosts] = useState([]);
-    const [sort, setSort] = useState("Newest");
+    const [sortOption, setSortOption] = useState("Newest");
+
 
     //fetch the community
-    useEffect(() => {
-        if(model.communities && communityID) {
-            const comm = model.communities.find((c) => c.communityID === communityID);
-            setCommunity(comm);
+    useMemo(() => {
+      if (model.communities && communityID) {
+          const comm = model.communities.find((c) => c.communityID === communityID);
+          setCommunity(comm);
+      }
+  }, [model.communities, communityID]);
 
-            if(comm) {
-                let communityPosts= model.posts.filter((post)=>
-                comm.postIDs.includes(post.postID));
-                setPosts(communityPosts);
-            }
-        }
-    }, [model.communities, communityID, model.posts]);
-
-    useEffect(() => {
-        if(posts.length > 0) {
-            const sortedPosts = sortPosts(model, sort, posts);
-            setPosts(sortedPosts);
-        }
-    }, [sort, posts]);
+  const communityPosts = useMemo(() => {
+    if (community) {
+        return model.posts.filter((post) =>
+            community.postIDs.includes(post.postID)
+        );
+    }
+    return [];
+}, [model.posts, community]);
+const sortedPosts = useMemo(() => {
+  if (communityPosts.length > 0) {
+      return sortPosts(model, sortOption, communityPosts);
+  }
+  return [];
+}, [model, sortOption, communityPosts]);
 
   if (!community) {
     return <div>Loading...</div>;
@@ -58,13 +60,13 @@ const CommunityPage = () => {
                 </div>
 
                 <div className="buttonContainer">
-                <button onClick={() => setSort("Newest")}>Newest</button>
-                <button onClick={() => setSort("Oldest")}>Oldest</button>
-                <button onClick={() => setSort("Active")}>Active</button>
-                </div>
+                <button onClick={() => setSortOption("Newest")}>Newest</button>
+                <button onClick={() => setSortOption("Oldest")}>Oldest</button>
+                <button onClick={() => setSortOption("Active")}>Active</button>
+            </div>
             </header>
             <div id = "postContainer" className = "postContainer">
-                {posts.map((post) =>(
+                {sortedPosts.map((post) =>(
                     <Post key = {post.postID} post = {post} showCommunityName = {false}/>
                 ))}
             </div>

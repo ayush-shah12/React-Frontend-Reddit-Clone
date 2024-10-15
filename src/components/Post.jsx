@@ -103,8 +103,7 @@ function Post({ post, fullPost = false, showCommunityName = true }) {
                     <div className="postTitle">
                         <h3>{post.title}</h3>
                     </div>
-                    {post.linkFlairID !== "" && <div className="linkFlair"> <p>{getLinkFlair(post.linkFlairID)}</p> </div>}
-
+                    {post.linkFlairID && <div className="linkFlair"> <p>{getLinkFlair(post.linkFlairID)}</p> </div>}
                     <div className="postTextPreview">
                         <p>{post.content.trim().substring(0, 80)}</p>
                     </div>
@@ -129,8 +128,7 @@ function Post({ post, fullPost = false, showCommunityName = true }) {
                 <div className="postTitle">
                     <h3>{post.title}</h3>
                 </div>
-                {post.linkFlairID !== "" && <div className="linkFlair">  <p>{getLinkFlair(post.linkFlairID)}</p> </div>}
-                <div className="postContent">
+                {post.linkFlairID && <div className="linkFlair"> <p>{getLinkFlair(post.linkFlairID)}</p> </div>}                <div className="postContent">
                     <p>{post.content}</p>
                 </div>
                 <div className="postFooter">
