@@ -6,31 +6,31 @@ import "../stylesheets/Navbar.css";
 const NavBar = () => {
 
   const { model } = useContext(ModelContext);
-  const { view, setView, setCommunityID } = useContext(ViewContext);
+  const { view, setView, communityID, setCommunityID } = useContext(ViewContext);
 
 
   return (
     <div className="sidebar">
       <ul>
-        <a style={{ cursor: "pointer" }} onClick={() => { setView("Home"); setCommunityID(null); }} className="nav-link active">
+        <div style={{ cursor: "pointer" }} onClick={() => { setView("Home"); setCommunityID(null); }} className="nav-link active">
           <li style={{backgroundColor: (view === "Home") ? "rgb(220, 61, 43)" : ""}}className="home-link">
             Home
           </li>
-        </a>
+        </div>
         <hr className="nav-divider" />
         <h3 className="communities-header" style={{ marginLeft: "5px", marginBottom: "5px" }}>
           Communities
         </h3>
-        <a href="/" className="create-community-link">
-          <li className="createCommunity" style={{ paddingLeft: "40px" }}>
+        <div className="create-community-link">
+          <li className="createCommunity" style={{ cursor: "pointer", paddingLeft: "40px" }}>
             Create Community
           </li>
-        </a>
+        </div>
         <li className="list-communities-li">
           <ol id="list-communities-ol" className="list-communities-ol">
             {model.communities.map((community) => (
               <li key={community.communityID}>
-                <a 
+                <div 
                   className="nav-link"
                   style={{cursor: "pointer"}}
                   onClick = {() => {
@@ -38,8 +38,8 @@ const NavBar = () => {
                     setCommunityID(community.communityID);
                   }}
                 >
-                  <p>p/{community.name}</p>
-                </a>
+                  <p style={{color: (view === "CommunityPage" && community.communityID === communityID) ? "rgb(220, 61, 43)" : "", fontWeight: (view === "CommunityPage" && community.communityID === communityID) ? "bold" : ""}}>p/{community.name}</p>
+                </div>
               </li>
             ))}
           </ol>
