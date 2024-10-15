@@ -5,6 +5,7 @@ import Post from "../components/Post"
 import { ModelContext } from "../context/ModelContext.jsx"
 import { ViewContext } from "../context/ViewContext";
 import { generateTimeStamp } from "../components/Post";
+import { sortPosts } from "../components/utils.js";
 import "../stylesheets/CommunityPage.css"
 import "../stylesheets/index.css"
 
@@ -32,76 +33,10 @@ const CommunityPage = () => {
 
     useEffect(() => {
         if(posts.length > 0) {
-            const sortedPosts = sortPosts();
+            const sortedPosts = sortPosts(model, sort, posts);
             setPosts(sortedPosts);
         }
     }, [sort, posts]);
-//WILL MODULIRIZE LATER:
-const sortPosts = () => {
-    const sortedPosts = [...posts];
-    if (sort === "Newest") {
-      sortedPosts.sort((post1, post2) =>
-        post1.postedDate < post2.postedDate ? 1 : -1
-      );
-    } else if (sort === "Oldest") {
-      sortedPosts.sort((post1, post2) =>
-        post1.postedDate > post2.postedDate ? 1 : -1
-      );
-    } else if (sort === "Active") {
-      let dict = {};
-      for (const post of sortedPosts) {
-        getReplyComment(post.postID, post.commentIDs);
-      }
-
-      function getReplyComment(postID, commentIDs) {
-        if (!dict[postID]) {
-          dict[postID] = [];
-        }
-        for (const commentID of commentIDs) {
-          let comment = model.comments.find(
-            (comment) => comment.commentID === commentID
-          );
-          dict[postID].push({
-            commentID: commentID,
-            commentDate: comment.commentedDate,
-          });
-
-          if (comment.commentIDs.length > 0) {
-            getReplyComment(postID, comment.commentIDs);
-          }
-        }
-      }
-
-      let otherDict = {};
-      for (const [pID, comments] of Object.entries(dict)) {
-        for (const comment of comments) {
-          if (
-            otherDict[pID] === undefined ||
-            otherDict[pID].commentDate < comment.commentDate
-          ) {
-            otherDict[pID] = {
-              commentID: comment.commentID,
-              commentDate: comment.commentDate,
-            };
-          }
-        }
-      }
-
-      sortedPosts.sort((post1, post2) => {
-        if (!otherDict[post1.postID]) {
-          return 1;
-        }
-        if (!otherDict[post2.postID]) {
-          return -1;
-        }
-        return otherDict[post1.postID].commentDate <
-          otherDict[post2.postID].commentDate
-          ? 1
-          : -1;
-      });
-    }
-    return sortedPosts;
-  };
 
   if (!community) {
     return <div>Loading...</div>;
@@ -126,7 +61,7 @@ const sortPosts = () => {
                 <button onClick={() => setSort("Newest")}>Newest</button>
                 <button onClick={() => setSort("Oldest")}>Oldest</button>
                 <button onClick={() => setSort("Active")}>Active</button>
-            </div>
+                </div>
             </header>
             <div id = "postContainer" className = "postContainer">
                 {posts.map((post) =>(
