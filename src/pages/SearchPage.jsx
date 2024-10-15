@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useCallback } from "react"
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Post from "../components/Post"
@@ -11,6 +11,16 @@ import "../stylesheets/HomePage.css"
 
 import NoResultsImage from "../images/NoResults.svg";
 
+const sanitizeWord = (word) => {
+    return word.replace(/[^\w]/g, '');
+};
+
+const stopWords = [
+    'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by', 'for', 'if', 'in', 'into', 'is',
+    'it', 'no', 'not', 'of', 'on', 'or', 'such', 'that', 'the', 'their', 'then', 'these',
+    'they', 'this', 'to', 'was', 'will', 'with'
+  ];
+
 
 const SearchPage = () => {
     const { model } = useContext(ModelContext);
@@ -19,13 +29,45 @@ const SearchPage = () => {
     const [sortedResults, setSortedResults] = useState([]);
     const [sort,setSort] = useState("Newest");
 
+
+    const performSearch = useCallback((query) => {
+        const searchTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
+       //filter out stopwords
+       const filteredTerms = searchTerms.filter(
+        (term) => !stopWords.includes(term)
+       ).map(sanitizeWord);
+       const matchedPosts = new Set();
+       
+        //search posts
+        model.posts.forEach((post) => {
+            const postTitleWords = post.title.toLowerCase().split(/\s+/).filter(Boolean).map(sanitizeWord);
+            const postContentWords = post.content.toLowerCase().split(/\s+/).filter(Boolean).map(sanitizeWord);
+
+            if(filteredTerms.some((term) => postTitleWords.includes(term) || postContentWords.includes(term))) {
+                matchedPosts.add(post.postID);
+            }
+        });
+
+        //search comments
+        model.comments.forEach((comment) => {
+            const commentContent = comment.content.toLowerCase().split(/\s+/).filter(Boolean).map(sanitizeWord);
+            if(filteredTerms.some((term) =>commentContent.includes(term))) {
+                matchedPosts.add(comment.postID);
+            }
+        });
+
+        //get the matched posts
+        const res = model.posts.filter((post) => matchedPosts.has(post.postID));
+        return res;
+    }, [model.posts, model.comments]);
+
     //perform search when searchQuery changes
     useEffect(() => {
         if(searchQuery) {
             const results = performSearch(searchQuery);
             setSearchResults(results);
         }
-    },[searchQuery]);
+    },[searchQuery, performSearch]);
 
     useEffect(() => {
         if(searchResults.length > 0){
@@ -35,44 +77,7 @@ const SearchPage = () => {
         else {
             setSortedResults([]);
         }
-    }, [sort, searchResults]);
-
-    const stopWords = [
-        'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by', 'for', 'if', 'in', 'into', 'is',
-        'it', 'no', 'not', 'of', 'on', 'or', 'such', 'that', 'the', 'their', 'then', 'these',
-        'they', 'this', 'to', 'was', 'will', 'with'
-      ];
-  
-
-    const performSearch = (query) => {
-        const searchTerms = query.toLowerCase().split(" ").filter(Boolean);
-       //filter out stopwords
-       const filteredTerms = searchTerms.filter(
-        (term) => !stopWords.includes(term)
-       );
-       const matchedPosts = new Set();
-        //search posts
-        model.posts.forEach((post) => {
-            const postTitle = post.title.toLowerCase();
-            const postContent = post.content.toLowerCase();
-
-            if(searchTerms.some((term) => postTitle.includes(term) || postContent.includes(term))) {
-                matchedPosts.add(post.postID);
-            }
-        });
-
-        //search comments
-        model.comments.forEach((comment) => {
-            const commentContent = comment.content.toLowerCase();
-            if(searchTerms.some((term) =>commentContent.includes(term))) {
-                matchedPosts.add(comment.postID);
-            }
-        });
-
-        //get the matched posts
-        const res = model.posts.filter((post) => matchedPosts.has(post.postID));
-        return res;
-    };
+    }, [sort, searchResults, model]);
     return (
         <div>
             <Header />
