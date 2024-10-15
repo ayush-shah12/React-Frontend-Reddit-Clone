@@ -30,7 +30,7 @@
     background-color: white;
 }
 
-.sidebar a {
+.sidebar div {
     text-decoration: none;
     color: black;
     font: 1em 'Poppins', sans-serif;
@@ -75,13 +75,13 @@
 }
 
 /* targets community names */
-.sidebar ul li.list-communities-li a {
+.sidebar ul li.list-communities-li div {
     text-decoration: none;
     color: black;
     font: 1em 'Poppins', sans-serif;
     cursor: pointer;
 }
 
-.sidebar ul li.list-communities-li a:hover {
+.sidebar ul li.list-communities-li div:hover {
     color: rgb(220, 61, 43);
 }
