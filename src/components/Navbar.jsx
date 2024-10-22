@@ -7,7 +7,15 @@ const NavBar = () => {
 
   const { model } = useContext(ModelContext);
   const { view, setView, communityID, setCommunityID } = useContext(ViewContext);
-
+  const handleNavigation = (targetView, params = {}) => {
+    setView(targetView);
+    if(params.communityID) {
+      setCommunityID(params.communityID);
+    }
+    else{
+      setCommunityID(null);
+    }
+  };
 
   return (
     <div className="sidebar">
@@ -22,7 +30,9 @@ const NavBar = () => {
           Communities
         </h3>
         <div className="create-community-link">
-          <li className="createCommunity" style={{ cursor: "pointer", paddingLeft: "40px" }}>
+          <li className={`createCommunity${view ==="Create" ? "active" : ""}`}
+           style={{ cursor: "pointer", paddingLeft: "40px" }}
+           onClick= {()=> handleNavigation("Create")}>
             Create Community
           </li>
         </div>
