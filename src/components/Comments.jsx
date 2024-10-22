@@ -68,7 +68,6 @@ const Comments = () => {
     let commentsNested = transformData(dict[postID]);
     sortTopLevelComments(commentsNested);
     sortReplies(commentsNested);
-    console.log(commentsNested);
 
     function renderComments(comments) {
         return comments.map(comment => {

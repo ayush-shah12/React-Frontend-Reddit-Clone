@@ -6,7 +6,7 @@ import "../stylesheets/index.css";
 
 const Header = () => {
 
-    const {setView, setSearchQuery } = useContext(ViewContext);
+    const {view, setView, setSearchQuery } = useContext(ViewContext);
     const [searchInput, setSearchInput] = useState("");
 
     const handleSearchInputChange = (e) => {
@@ -24,10 +24,10 @@ const Header = () => {
     
     return (
         <nav>
-            <a style={{cursor: "pointer"}}onClick={() => {setView("Home")}} className="nav-link logo-name">
+            <div style={{cursor: "pointer"}}onClick={() => {setView("Home")}} className="nav-link logo-name">
                 <img src={redditLogo} alt="logo" className="logo"/>
                     <p style={{paddingLeft: "5%"}}>phreddit</p>
-            </a>
+            </div>
 
             <input 
             type="text" 
@@ -38,7 +38,7 @@ const Header = () => {
             onChange={handleSearchInputChange}
             onKeyDown={handleSearchKeyPress}/>
 
-                <button className="create nav-link" onClick={() =>setView("NewPost")}>
+                <button style={{backgroundColor: (view === "NewPost") ? "rgb(220, 61, 43)" : ""}} className="create nav-link" onClick={() =>setView("NewPost")}>
                     Create Post
                 </button>
         </nav>

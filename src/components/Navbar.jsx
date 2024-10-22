@@ -31,7 +31,7 @@ const NavBar = () => {
         </h3>
         <div className="create-community-link">
           <li className={`createCommunity${view ==="CreateCommunity" ? "active" : ""}`}
-           style={{ cursor: "pointer", paddingLeft: "40px" }}
+           style={{ cursor: "pointer", paddingLeft: "40px", backgroundColor: (view === "CreateCommunity") ? "rgb(220, 61, 43)" : "" }}
            onClick= {()=> handleNavigation("CreateCommunity")}>
             Create Community
           </li>

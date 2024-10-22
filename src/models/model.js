@@ -11,7 +11,7 @@ export default class Model {
                     postIDs: ['p1', 'p3'],
                     startDate: new Date('August 10, 2014 04:18:00'),
                     members: ['rollo', 'shemp', 'catlady13', 'astyanax', 'trucknutz69'],
-                    memberCount: 4,
+                    memberCount: 5,
                 },
                 { // community object 2
                     communityID: 'community2',
