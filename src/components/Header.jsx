@@ -38,7 +38,7 @@ const Header = () => {
             onChange={handleSearchInputChange}
             onKeyDown={handleSearchKeyPress}/>
 
-                <button className="create nav-link">
+                <button className="create nav-link" onClick={() =>setView("NewPost")}>
                     Create Post
                 </button>
         </nav>
