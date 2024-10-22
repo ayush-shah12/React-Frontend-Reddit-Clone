@@ -30,9 +30,9 @@ const NavBar = () => {
           Communities
         </h3>
         <div className="create-community-link">
-          <li className={`createCommunity${view ==="Create" ? "active" : ""}`}
+          <li className={`createCommunity${view ==="CreateCommunity" ? "active" : ""}`}
            style={{ cursor: "pointer", paddingLeft: "40px" }}
-           onClick= {()=> handleNavigation("Create")}>
+           onClick= {()=> handleNavigation("CreateCommunity")}>
             Create Community
           </li>
         </div>

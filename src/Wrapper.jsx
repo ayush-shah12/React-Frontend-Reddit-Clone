@@ -3,8 +3,9 @@ import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import PostPage from "./pages/PostPage";
 import { ViewContext } from "./context/ViewContext";
-import Create from "./pages/Create";
+import CreateCommunity from "./pages/CreateCommunityPage";
 import CommunityPage from "./pages/CommunityPage";
+import NewPost from "./pages/NewPost";
 
 const Wrapper = () => {
     const { view} = useContext(ViewContext);
@@ -23,8 +24,11 @@ const Wrapper = () => {
       case "SearchPage":
         content = <SearchPage />;
         break;
-      case "Create":
-        content = <Create />;
+      case "CreateCommunity":
+        content = <CreateCommunity />;
+        break;
+      case "NewPost": 
+        content = <NewPost />;
         break;
       default:
         content = <HomePage />;
