@@ -6,6 +6,7 @@ import { ViewContext } from "./context/ViewContext";
 import CreateCommunity from "./pages/CreateCommunityPage";
 import CommunityPage from "./pages/CommunityPage";
 import NewPost from "./pages/NewPost";
+import NewComment from "./pages/NewCommentPage";
 
 const Wrapper = () => {
     const { view} = useContext(ViewContext);
@@ -29,6 +30,9 @@ const Wrapper = () => {
         break;
       case "NewPost": 
         content = <NewPost />;
+        break;
+      case "NewComment":
+        content = <NewComment />;
         break;
       default:
         content = <HomePage />;

@@ -6,6 +6,7 @@ export function ViewContextProvider({ children }) {
     const [postID, setPostID] = useState(null);
     const [communityID, setCommunityID] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
+    const [commentID, setCommentID] = useState(null);
 
     return (
         <ViewContext.Provider 
@@ -18,6 +19,8 @@ export function ViewContextProvider({ children }) {
             setCommunityID,
             searchQuery,
             setSearchQuery,
+            commentID,
+            setCommentID,
             }}
         >
 

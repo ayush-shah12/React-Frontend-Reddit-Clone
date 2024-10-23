@@ -8,7 +8,7 @@ import image from "../images/thinking-snoo.png";
 const Comments = () => {
 
     const { model } = useContext(ModelContext);
-    const { postID } = useContext(ViewContext);
+    const { postID, setView, setCommentID } = useContext(ViewContext);
 
     function getAllComments(dict, postID, commentIDs, initialComment = null) {
 
@@ -83,7 +83,10 @@ const Comments = () => {
                     </div>
 
                     <div className="commentFooter">
-                        <button>Reply</button>
+                        <button onClick={() => {
+                            setCommentID(comment.commentID);
+                            setView("NewComment");
+                        }}>Reply</button>
                     </div>
 
                     {comment.replies.length > 0 && (
