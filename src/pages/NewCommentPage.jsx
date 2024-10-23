@@ -28,7 +28,7 @@ const NewComment = () => {
             username: "",
         };
 
-        if(commentContent.trim() == "") {
+        if(commentContent.trim() === "") {
             validationErrors.commentContent = "Comment content is required.";
             isValid = false;
         }
