@@ -2,7 +2,7 @@ import "../stylesheets/Comments.css";
 import { useContext } from "react";
 import { ViewContext } from "../context/ViewContext";
 import { ModelContext } from "../context/ModelContext";
-import { generateTimeStamp } from "./Post.jsx";
+import { generateTimeStamp } from "./utils";
 import image from "../images/thinking-snoo.png";
 
 const Comments = () => {

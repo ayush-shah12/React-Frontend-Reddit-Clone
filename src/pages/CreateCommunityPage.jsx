@@ -1,12 +1,12 @@
 // either reuse this component for creating or create 
 // additional files for create post, comments, and community
+import React, { useContext, useState } from "react";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
-import React, { useContext, useState } from "react"
-import { ModelContext } from "../context/ModelContext.jsx"
+import { ModelContext } from "../context/ModelContext.jsx";
 import { ViewContext } from "../context/ViewContext";
-import "../stylesheets/CreateCommunity.css"
-import "../stylesheets/index.css"
+import "../stylesheets/CreateCommunity.css";
+import "../stylesheets/index.css";
 
 const CreateCommunity = () => {
     const {setView, setCommunityID } = useContext(ViewContext);
