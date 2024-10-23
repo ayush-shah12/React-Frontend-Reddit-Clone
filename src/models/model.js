@@ -8,7 +8,7 @@ export default class Model {
                     communityID: 'community1',
                     name: 'Am I the Jerk?',
                     description: 'A practical application of the principles of justice.',
-                    postIDs: ['p1', 'p3'],
+                    postIDs: ['p1'],
                     startDate: new Date('August 10, 2014 04:18:00'),
                     members: ['rollo', 'shemp', 'catlady13', 'astyanax', 'trucknutz69'],
                     memberCount: 5,

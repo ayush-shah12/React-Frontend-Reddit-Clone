@@ -47,10 +47,11 @@ export function generateTimeStamp(date) {
     return (yearDifference === 1) ? "1 year ago" : yearDifference + " years ago";
 
 }
+
 function Post({ post, fullPost = false, showCommunityName = true }) {
 
     const { model, setModel } = useContext(ModelContext);
-    const { setView, setPostID } = useContext(ViewContext);
+    const { setView, setPostID, setCommentID } = useContext(ViewContext);
 
     function getLinkFlair(linkFlairID) {
         let postFlair = "";
@@ -135,7 +136,10 @@ function Post({ post, fullPost = false, showCommunityName = true }) {
                     <p> {post.views} views • {getNumComments(post.commentIDs)} comments</p>
                 </div>
                 <div className="addCommentButtonContainer">
-                    <button>Comment</button>
+                    <button onClick={() => {
+                        setCommentID(null);
+                        setView("NewComment");
+                    }}>Comment</button>
                 </div>
             </div>
         )
