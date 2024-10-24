@@ -3,11 +3,18 @@
 
 In the sections below, list and describe each contribution briefly.
 
-## Team Member 1 Contribution
-
-## Team Member 2 Contribution
-
-
+## Team Member 1 contribution - Ayush
+- Banner
+- Navbar
+- Home Page view 
+- Post Page View
+- Timestamps
+## Team Member 2 contribution - Ekaterina
+- Community Page View
+- Search Results Page View
+- New Community Page View
+- New Post View
+- New Comment Page View
 
 # Getting Started with Create React App
 
